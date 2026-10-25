@@ -6,9 +6,10 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: #000;
   color: #ffffff;
   min-height: 100vh;
+  overscroll-behavior: none;
 }

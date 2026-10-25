@@ -1,7 +1,12 @@
+.camera-page {
+  height: 9999vh;
+  background: #000;
+  overscroll-behavior: none;
+}
+
 .camera-fullscreen {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
   background: #000;

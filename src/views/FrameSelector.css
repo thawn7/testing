@@ -1,5 +1,6 @@
 .second-page {
   background: #144a38 !important;
+  max-width: 100% !important;
 }
 
 .swipe-hint {
@@ -8,6 +9,36 @@
   text-align: center;
   margin-top: 30px;
   margin-bottom: 8px;
+}
+
+@media (orientation: landscape) {
+  .swipe-hint {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    margin-bottom: 5px;
+  }
+
+  .scroll-card {
+    width: 150px;
+  }
+
+  .scroll-card-selected {
+    transform: scale(1.2);
+  }
+
+  .selectbutton {
+    margin: 10px auto;
+    padding: 10px 30px;
+    font-size: 16px;
+  }
 }
 
 .scroll-strip {

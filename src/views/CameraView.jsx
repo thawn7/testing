@@ -8,6 +8,7 @@ export default function CameraView({ frame, onCapture }) {
   var [camera, setCamera] = useState('user')
   var [timer, setTimer] = useState(null)
 
+
   useEffect(function () {
     navigator.mediaDevices.getUserMedia({
       video: { facingMode: camera, width: { ideal: 3840 }, height: { ideal: 2160 }, frameRate: { ideal: 60 } },
@@ -23,7 +24,6 @@ export default function CameraView({ frame, onCapture }) {
     }
   }, [camera])
 
-  // countdown timer
   useEffect(function () {
     if (timer === null) return
     if (timer === 0) {
@@ -46,30 +46,31 @@ export default function CameraView({ frame, onCapture }) {
     videoClass = 'camera-behind mirrored'
   }
 
-  // button text: shows "Start" or the countdown number
   var buttonText = 'Start'
   if (timer !== null && timer > 0) {
     buttonText = timer
   }
 
   return (
-    <div className="camera-fullscreen">
-      <div className="rotate-message">Please rotate your phone</div>
-      <video ref={videoRef} autoPlay playsInline muted className={videoClass} />
-      <img src={frame.image} className="frame-ontop" />
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
-      <button className="capturebutton" onClick={function () {
-        if (timer === null) {
-          setTimer(10)
-        }
-      }}>{buttonText}</button>
-      <button className="flipbutton" onClick={function () {
-        if (camera === 'user') {
-          setCamera('environment')
-        } else {
-          setCamera('user')
-        }
-      }}>⟳</button>
+    <div className="camera-page">
+      <div className="camera-fullscreen">
+        <div className="rotate-message">Please rotate your phone</div>
+        <video ref={videoRef} autoPlay playsInline muted className={videoClass} />
+        <img src={frame.image} className="frame-ontop" />
+        <canvas ref={canvasRef} style={{ display: 'none' }} />
+        <button className="capturebutton" onClick={function () {
+          if (timer === null) {
+            setTimer(10)
+          }
+        }}>{buttonText}</button>
+        <button className="flipbutton" onClick={function () {
+          if (camera === 'user') {
+            setCamera('environment')
+          } else {
+            setCamera('user')
+          }
+        }}>⟳</button>
+      </div>
     </div>
   )
 }

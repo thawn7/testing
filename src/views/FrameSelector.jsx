@@ -1,6 +1,6 @@
-// frame selection screen - visitor scrolls to pick an overlay frame
 import { useRef, useState, useEffect } from 'react'
 import './FrameSelector.css'
+import usaceLogo from '../images/usace-logo.png'
 
 import cantonLake from '../images/canton-lake.png'
 import fortSupplyLake from '../images/fort-supply-lake.png'
@@ -23,7 +23,6 @@ export default function FrameSelector({ onSelect }) {
   var stripRef = useRef(null)
   var cardRefs = useRef([])
 
-  // auto-detect which card is in the center while scrolling
   useEffect(function () {
     var strip = stripRef.current
     if (!strip) return
@@ -55,8 +54,10 @@ export default function FrameSelector({ onSelect }) {
   return (
     <div className="app second-page">
       <header className="header">
+        <img src={usaceLogo} className="logo" />
         <h1>Choose a Frame</h1>
-        <p className="subtitle">USACE - Tulsa District</p>
+        <p className="subtitle">US Army Corps of Engineers&reg;</p>
+        <p className="subtitle">Tulsa District</p>
       </header>
 
       <p className="swipe-hint">Swipe to select a frame!</p>

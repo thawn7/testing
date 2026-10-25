@@ -10,6 +10,11 @@
   overflow: hidden;
 }
 
+.logo {
+  width: 60px;
+  margin-bottom: 8px;
+}
+
 .header h1 {
   font-size: 32px;
   margin-bottom: 4px;
