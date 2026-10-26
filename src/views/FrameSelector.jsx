@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import './FrameSelector.css'
 import usaceLogo from '../images/usace-logo.png'
+import nsuLogo from '../images/nsu-logo.png'
 
 import cantonLake from '../images/canton-lake.png'
 import fortSupplyLake from '../images/fort-supply-lake.png'
@@ -54,9 +55,12 @@ export default function FrameSelector({ onSelect }) {
   return (
     <div className="app second-page">
       <header className="header">
-        <img src={usaceLogo} className="logo" />
+        <div className="logo-row">
+          <img src={nsuLogo} className="logo nsu-logo" />
+          <img src={usaceLogo} className="logo" />
+        </div>
         <h1>Choose a Frame</h1>
-        <p className="subtitle">US Army Corps of Engineers&reg;</p>
+        <p className="subtitle"><strong>US Army Corps of Engineers&reg;</strong></p>
         <p className="subtitle">Tulsa District</p>
       </header>
 

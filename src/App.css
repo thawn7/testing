@@ -31,32 +31,43 @@
 
 .preview-buttons {
   position: absolute;
-  bottom: 15px;
+  bottom: 1vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 20px;
+  gap: 3vw;
   z-index: 10;
 }
 
 .retakebutton {
-  padding: 12px 28px;
-  font-size: 16px;
+  width: 25vw;
+  height: 11vh;
+  font-size: 7vh;
   font-weight: bold;
   background: #e53935;
   color: #fff;
-  border: none;
-  border-radius: 8px;
+  border: 1vh solid #000;
   cursor: pointer;
 }
 
-.donebutton {
-  padding: 12px 28px;
-  font-size: 16px;
+.savebutton {
+  width: 25vw;
+  height: 11vh;
+  font-size: 7vh;
   font-weight: bold;
-  background: #4caf50;
+  background: #2196f3;
   color: #fff;
-  border: none;
-  border-radius: 8px;
+  border: 1vh solid #000;
+  cursor: pointer;
+}
+
+.sendbutton {
+  width: 25vw;
+  height: 11vh;
+  font-size: 7vh;
+  font-weight: bold;
+  background: rgb(17, 204, 17);
+  color: #fff;
+  border: 1vh solid #000;
   cursor: pointer;
 }

@@ -1,0 +1,48 @@
+.credits-page {
+  min-height: 100vh;
+  background: #0f3d2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vmax;
+  padding: 3vmax 0;
+}
+
+.credits-title {
+  font-size: 3.5vmax;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: bold;
+  font-family: 'Times New Roman', serif;
+}
+
+.credits-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vmax;
+}
+
+.credits-logo {
+  height: 15vmax;
+}
+
+.credits-thanks {
+  font-size: 2vmax;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.credits-homebutton {
+  padding: 1.5vmax 4vmax;
+  font-size: 2vmax;
+  font-weight: bold;
+  background: #f0c040;
+  color: #000;
+  border: none;
+  border-radius: 3vmax;
+  cursor: pointer;
+}

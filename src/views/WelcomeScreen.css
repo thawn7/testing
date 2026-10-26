@@ -10,9 +10,57 @@
   overflow: hidden;
 }
 
+@media (orientation: landscape) {
+  .app {
+    max-width: 100%;
+    padding: 2vh 20px;
+  }
+
+  .logo {
+    width: 6vh;
+    margin-bottom: 1vh;
+  }
+
+  .header h1 {
+    font-size: 4vh;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    font-size: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .screen {
+    gap: 2vh;
+  }
+
+  .welcome-text {
+    font-size: 2.5vh;
+    margin-bottom: 1vh;
+  }
+
+  .startbutton {
+    margin-top: 1vh;
+    padding: 1.5vh 6vw;
+    font-size: 2.5vh;
+  }
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
 .logo {
   width: 60px;
-  margin-bottom: 8px;
+}
+
+.nsu-logo {
+  width: 80px;
 }
 
 .header h1 {
@@ -22,8 +70,9 @@
 
 .subtitle {
   font-size: 15px;
-  opacity: 0.8;
-  margin-bottom: 24px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  color: white;
 }
 
 .screen {

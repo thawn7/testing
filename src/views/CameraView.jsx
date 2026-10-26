@@ -7,6 +7,9 @@ export default function CameraView({ frame, onCapture }) {
   var canvasRef = useRef(null)
   var [camera, setCamera] = useState('user')
   var [timer, setTimer] = useState(null)
+  var [timerLength, setTimerLength] = useState(5)
+  var [showTimerPicker, setShowTimerPicker] = useState(false)
+  var [flash, setFlash] = useState(false)
 
 
   useEffect(function () {
@@ -31,8 +34,16 @@ export default function CameraView({ frame, onCapture }) {
       var canvas = canvasRef.current
       canvas.width = video.videoWidth
       canvas.height = video.videoHeight
-      canvas.getContext('2d').drawImage(video, 0, 0)
-      onCapture(canvas.toDataURL('image/jpeg'))
+      var ctx = canvas.getContext('2d')
+      if (camera === 'user') {
+        ctx.translate(canvas.width, 0)
+        ctx.scale(-1, 1)
+      }
+      ctx.drawImage(video, 0, 0)
+      setFlash(true)
+      setTimeout(function () {
+        onCapture(canvas.toDataURL('image/jpeg'))
+      }, 300)
       return
     }
     var countdown = setTimeout(function () {
@@ -54,22 +65,37 @@ export default function CameraView({ frame, onCapture }) {
   return (
     <div className="camera-page">
       <div className="camera-fullscreen">
+        {flash && <div className="camera-flash" />}
         <div className="rotate-message">Please rotate your phone</div>
         <video ref={videoRef} autoPlay playsInline muted className={videoClass} />
         <img src={frame.image} className="frame-ontop" />
         <canvas ref={canvasRef} style={{ display: 'none' }} />
-        <button className="capturebutton" onClick={function () {
-          if (timer === null) {
-            setTimer(10)
-          }
-        }}>{buttonText}</button>
-        <button className="flipbutton" onClick={function () {
-          if (camera === 'user') {
-            setCamera('environment')
-          } else {
-            setCamera('user')
-          }
-        }}>⟳</button>
+        <div className="capture-row">
+          <button className="capturebutton" onClick={function () {
+            if (timer === null) {
+              setTimer(timerLength)
+            }
+          }}>{buttonText}</button>
+        </div>
+        {timer === null && (
+          <div className="right-controls">
+            {showTimerPicker && (
+              <div className="timer-selector">
+                <button className="timer-option" onClick={function (e) { e.target.classList.add('timer-selected'); setTimerLength(5); setTimeout(function () { setShowTimerPicker(false) }, 200) }}>5s</button>
+                <button className="timer-option" onClick={function (e) { e.target.classList.add('timer-selected'); setTimerLength(10); setTimeout(function () { setShowTimerPicker(false) }, 200) }}>10s</button>
+                <button className="timer-option" onClick={function (e) { e.target.classList.add('timer-selected'); setTimerLength(15); setTimeout(function () { setShowTimerPicker(false) }, 200) }}>15s</button>
+              </div>
+            )}
+            <button className="changetimerbutton" onClick={function () { setShowTimerPicker(!showTimerPicker) }}>{timerLength + ' Second'}</button>
+            <button className="flipbutton" onClick={function () {
+              if (camera === 'user') {
+                setCamera('environment')
+              } else {
+                setCamera('user')
+              }
+            }}>⟳</button>
+          </div>
+        )}
       </div>
     </div>
   )
