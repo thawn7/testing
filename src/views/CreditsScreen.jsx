@@ -3,9 +3,10 @@ import './CreditsScreen.css'
 import nsuLogo from '../images/nsu-logo.png'
 import usaceLogo from '../images/usace-full.png'
 
-export default function CreditsScreen({ onDone }) {
+export default function CreditsScreen({ shared, onDone }) {
   return (
     <div className="credits-page">
+      {shared && <p className="credits-thankyou">Thank you for sharing your photo with us!</p>}
       <h2 className="credits-title">This Digital Selfie Station<br />was created through a<br />Partnership with</h2>
       <div className="credits-logos">
         <img src={nsuLogo} className="credits-logo" />

@@ -43,6 +43,10 @@
   cursor: pointer;
 }
 
+.allowbutton:active {
+  background: #388e3c;
+}
+
 .declinebutton {
   padding: 2vh 6vw;
   font-size: 2.5vh;
@@ -52,4 +56,8 @@
   border: none;
   border-radius: 3vh;
   cursor: pointer;
+}
+
+.declinebutton:active {
+  background: #c62828;
 }

@@ -5,12 +5,14 @@ import FrameSelector from './views/FrameSelector'
 import CameraView from './views/CameraView'
 import ConsentScreen from './views/ConsentScreen'
 import CreditsScreen from './views/CreditsScreen'
+import sendPhoto from './utils/emailService'
 import './App.css'
 
 export default function App() {
   var [screen, setScreen] = useState('welcome')
   var [frame, setFrame] = useState(null)
   var [photo, setPhoto] = useState(null)
+  var [shared, setShared] = useState(false)
 
   function handleStart() {
     setScreen('frames')
@@ -36,11 +38,26 @@ export default function App() {
   }
 
   function handleAllow() {
-    // TODO: email photo to USACE
+    // combine photo + frame then send
+    var canvas = document.createElement('canvas')
+    var photoImg = new Image()
+    var frameImg = new Image()
+    photoImg.src = photo
+    frameImg.src = frame.image
+    photoImg.onload = function () {
+      canvas.width = frameImg.naturalWidth || 1920
+      canvas.height = frameImg.naturalHeight || 1080
+      var ctx = canvas.getContext('2d')
+      ctx.drawImage(photoImg, 0, 0, canvas.width, canvas.height)
+      ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height)
+      sendPhoto(canvas.toDataURL('image/jpeg', 0.8))
+    }
+    setShared(true)
     setScreen('credits')
   }
 
   function handleDecline() {
+    setShared(false)
     setScreen('credits')
   }
 
@@ -100,6 +117,6 @@ export default function App() {
   }
 
   if (screen === 'credits') {
-    return <CreditsScreen onDone={handleCredits} />
+    return <CreditsScreen shared={shared} onDone={handleCredits} />
   }
 }

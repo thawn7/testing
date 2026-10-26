@@ -9,6 +9,13 @@
   padding: 3vmax 0;
 }
 
+.credits-thankyou {
+  font-size: 2.5vmax;
+  color: #f0c040;
+  font-weight: bold;
+  text-align: center;
+}
+
 .credits-title {
   font-size: 3.5vmax;
   color: #fff;
