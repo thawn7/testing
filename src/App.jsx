@@ -5,7 +5,8 @@ import FrameSelector from './views/FrameSelector'
 import CameraView from './views/CameraView'
 import ConsentScreen from './views/ConsentScreen'
 import CreditsScreen from './views/CreditsScreen'
-import sendPhoto from './utils/emailService'
+import sendEmail from './utils/emailService'
+import uploadPhoto from './utils/uploadPhoto'
 import './App.css'
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
   }
 
   function handleAllow() {
-    // combine photo + frame then send
+    // combine photo + frame, upload to cloud, then email the link
     var canvas = document.createElement('canvas')
     var photoImg = new Image()
     var frameImg = new Image()
@@ -50,7 +51,11 @@ export default function App() {
       var ctx = canvas.getContext('2d')
       ctx.drawImage(photoImg, 0, 0, canvas.width, canvas.height)
       ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height)
-      sendPhoto(canvas.toDataURL('image/jpeg', 0.8))
+      uploadPhoto(canvas.toDataURL('image/jpeg', 0.95)).then(function (url) {
+        if (url) {
+          sendEmail(url)
+        }
+      })
     }
     setShared(true)
     setScreen('credits')
@@ -100,7 +105,7 @@ export default function App() {
               ctx.drawImage(photoImg, 0, 0, canvas.width, canvas.height)
               ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height)
               var link = document.createElement('a')
-              link.download = 'USACE_Selfie_' + Date.now() + '.png'
+              link.download = 'USACE_Selfie_' + Date.now() + '.jpg'
               link.href = canvas.toDataURL('image/jpeg', 0.95)
               link.click()
             }
