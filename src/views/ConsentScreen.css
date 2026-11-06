@@ -38,7 +38,7 @@
   font-weight: bold;
   background: #4caf50;
   color: #fff;
-  border: none;
+  border: 0;
   border-radius: 3vh;
   cursor: pointer;
 }
@@ -53,7 +53,7 @@
   font-weight: bold;
   background: #e53935;
   color: #fff;
-  border: none;
+  border: 0;
   border-radius: 3vh;
   cursor: pointer;
 }

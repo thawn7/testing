@@ -42,6 +42,8 @@ export default function CameraView({ frame, onCapture }) {
       ctx.drawImage(video, 0, 0)
       setFlash(true)
       setTimeout(function () {
+        setFlash(false)
+        setTimer(null)
         onCapture(canvas.toDataURL('image/jpeg'))
       }, 300)
       return

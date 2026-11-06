@@ -25,6 +25,7 @@ export default function App() {
   }
 
   function handleCapture(photoData) {
+    window.scrollTo(0, 0)
     setPhoto(photoData)
     setScreen('preview')
   }
@@ -35,6 +36,7 @@ export default function App() {
   }
 
   function handleSend() {
+    window.scrollTo(0, 0)
     setScreen('consent')
   }
 
@@ -43,8 +45,10 @@ export default function App() {
     var canvas = document.createElement('canvas')
     var photoImg = new Image()
     var frameImg = new Image()
-    photoImg.src = photo
     frameImg.src = frame.image
+    frameImg.onload = function () {
+      photoImg.src = photo
+    }
     photoImg.onload = function () {
       canvas.width = frameImg.naturalWidth || 1920
       canvas.height = frameImg.naturalHeight || 1080

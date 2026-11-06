@@ -6,7 +6,6 @@ var supabase = createClient(
 )
 
 export default function uploadPhoto(photoData) {
-  // convert base64 to file
   var byteString = atob(photoData.split(',')[1])
   var mimeType = photoData.split(',')[0].split(':')[1].split(';')[0]
   var bytes = new Uint8Array(byteString.length)
