@@ -1,0 +1,80 @@
+.app.second-page {
+  background: #144a38;
+  max-width: 100%;
+}
+
+.swipe-hint {
+  color: #fff;
+  font-size: 3vh;
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  font-family: 'Times New Roman', serif;
+}
+
+.scroll-strip {
+  display: flex;
+  gap: 2vw;
+  overflow-x: auto;
+  padding: 2vh 2vw;
+  scroll-snap-type: x mandatory;
+  flex: 1;
+  align-items: center;
+}
+
+.scroll-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card {
+  flex-shrink: 0;
+  width: 30vh;
+  text-align: center;
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+.scroll-card-selected {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.scroll-spacer {
+  flex-shrink: 0;
+  width: 35%;
+}
+
+.scroll-thumb {
+  width: 100%;
+  border-radius: 1.5vh;
+  background: #fff;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.scroll-card-selected .scroll-thumb {
+  border-color: #ff9800;
+  box-shadow: 0 0.5vh 2vh rgba(255, 152, 0, 0.4);
+}
+
+.scroll-name {
+  color: #fff;
+  font-size: 2vh;
+  font-weight: bold;
+  margin-top: 1vh;
+}
+
+.selectbutton {
+  margin: 2vh auto 3vh;
+  padding: 1.5vh 5vw;
+  font-size: 2.5vh;
+  font-weight: bold;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 3vh;
+  cursor: pointer;
+  display: block;
+}
