@@ -91,6 +91,7 @@ export default function App() {
   if (screen === 'preview') {
     return (
       <div className="preview-screen">
+        <div className="rotate-message">Please rotate your phone</div>
         <div className="preview-frame">
           <img src={frame.image} className="preview-frameimg" />
           <img src={photo} className="preview-photo" />
